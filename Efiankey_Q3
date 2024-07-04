@@ -1,0 +1,26 @@
+<?php
+
+function calculateDaysAndOddEven($startDate, $endDate) {
+    // Convert the dates to DateTime objects
+    $start = new DateTime($startDate);
+    $end = new DateTime($endDate);
+    
+    // Calculate the difference between the dates
+    $interval = $start->diff($end);
+    $days = $interval->days;
+    
+    // Determine if the number of days is odd or even
+    $oddOrEven = ($days % 2 == 0) ? 'even' : 'odd';
+    
+    return [
+        'days' => $days,
+        'oddOrEven' => $oddOrEven
+    ];
+}
+
+// Test function
+$startDate = '2023-07-01';
+$endDate = '2023-07-10';
+$result = calculateDaysAndOddEven($startDate, $endDate);
+
+echo "Number of days between $startDate and $endDate is {$result['days']} and it is an {$result['oddOrEven']} number of days.";
